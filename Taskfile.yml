@@ -27,5 +27,5 @@ tasks:
           GOOS={{.ITEM.OS}} GOARCH={{.ITEM.ARCH}} 
           go build -o 
           ./bin/notifyrss_{{.ITEM.OS}}_{{.ITEM.ARCH}}{{ ternary ".exe" "" (eq .ITEM.OS "windows")}} 
-          -trimpath -ldflags '-s -w -X main.version={{.VERSION}}"' .
+          -trimpath -ldflags '-s -w -X main.version={{.VERSION}}' .
   
