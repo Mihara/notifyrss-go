@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    desc: "List available tasks"
+    cmds:
+      - task -a
+    silent: true
+
+  build:
+    desc: "Build executables for release"
+    vars:
+      VERSION:
+        sh: git describe --tags --abbrev=0 || echo \(development\)
+    env:
+      CGO_ENABLED: 0
+    cmds:
+      - mkdir -p bin
+      - rm -f bin/*
+      - for:
+          matrix:
+            OS: ["windows", "linux", "darwin"]
+            ARCH: ["amd64", "arm64"]
+        cmd: >
+          GOOS={{.ITEM.OS}} GOARCH={{.ITEM.ARCH}} 
+          go build -o 
+          ./bin/notifyrss_{{.ITEM.OS}}_{{.ITEM.ARCH}}{{ ternary ".exe" "" (eq .ITEM.OS "windows")}} 
+          -trimpath -ldflags '-s -w -X main.version={{.VERSION}}"' .
+  

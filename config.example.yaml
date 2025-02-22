@@ -1,0 +1,11 @@
+mail:
+  host: example.com
+  port: 993
+  connection: ssl
+  user: notifier
+  pass: -------------
+  folder: INBOX
+options:
+  format: atom
+files:
+  aoo: ao3-notifications.atom.xml
