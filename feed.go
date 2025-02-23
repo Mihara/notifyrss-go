@@ -8,7 +8,6 @@ import (
 	"slices"
 	"time"
 
-	"github.com/davecgh/go-spew/spew"
 	rss "github.com/gorilla/feeds"
 )
 
@@ -85,7 +84,6 @@ func generateFeeds(cfg NotifyRSSConfig, notifications []*NotificationEmail) {
 			feedText, err := makeFeed(notifier, items, cfg.Options.Format)
 			if err != nil {
 				log.Printf("failed to produce a feed, this might be a bug: %v", err)
-				spew.Dump(feedText)
 			}
 
 			log.Printf("saving feed in %s format to %s", cfg.Options.Format, target)

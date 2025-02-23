@@ -6,7 +6,6 @@ require (
 	github.com/PuerkitoBio/goquery v1.10.2
 	github.com/cristalhq/aconfig v0.18.6
 	github.com/cristalhq/aconfig/aconfigyaml v0.17.1
-	github.com/davecgh/go-spew v1.1.1
 	github.com/emersion/go-imap/v2 v2.0.0-beta.4
 	github.com/emersion/go-message v0.18.2
 	github.com/gorilla/feeds v1.2.0
